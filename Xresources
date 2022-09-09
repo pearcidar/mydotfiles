@@ -1,0 +1,184 @@
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.autohint:	0
+Xft.hintstyle:	hintslight
+Xft.rgba:	rgb
+Xft.lcdfilter:	lcddefault
+
+st.font:         FantasqueSansMono Nerd Font:style:medium:pixelsize=15
+
+! window padding
+st.borderpx: 15
+
+!- 0.1 to 0.9 = transparency
+st.alpha: 1.0
+
+
+!Tokyonight colorscheme
+!*background: #15161E
+!*foreground: #c0caf5
+!*cursorColor: #e0af68
+!
+!*color0: #15161E
+!*color1: #f7768e
+!*color2: #9ece6a
+!*color3: #e0af68
+!*color4: #7aa2f7
+!*color5: #bb9af7
+!*color6: #7dcfff
+!*color7: #a9b1d6
+!
+!*color8: #414868
+!*color9: #f7768e
+!*color10: #9ece6a
+!*color11: #e0af68
+!*color12: #7aa2f7
+!*color13: #bb9af7
+!*color14: #7dcfff
+!*color15: #c0caf5  
+!
+!#define nord0 #2E3440
+!#define nord1 #3B4252
+!#define nord2 #434C5E
+!#define nord3 #4C566A
+!#define nord4 #D8DEE9
+!#define nord5 #E5E9F0
+!#define nord6 #ECEFF4
+!#define nord7 #8FBCBB
+!#define nord8 #88C0D0
+!#define nord9 #81A1C1
+!#define nord10 #5E81AC
+!#define nord11 #BF616A
+!#define nord12 #D08770
+!#define nord13 #EBCB8B
+!#define nord14 #A3BE8C
+!#define nord15 #B48EAD
+!
+!*foreground:   nord4
+!*background:   nord0
+!*cursorColor:  nord4
+!*fading: 35
+!*fadeColor: nord3
+!
+!*color0: nord1
+!*color1: nord11
+!*color2: nord14
+!*color3: nord13
+!*color4: nord9
+!*color5: nord15
+!*color6: nord8
+!*color7: nord5
+!*color8: nord3
+!*color9: nord11
+!*color10: nord14
+!*color11: nord13
+!*color12: nord9
+!*color13: nord15
+!*color14: nord7
+!*color15: nord6
+!
+!
+! Dracula Xresources palette
+!*foreground: #F8F8F2
+!*background: #202435
+!*color0:     #282a36
+!*color8:     #4D4D4D
+!*color1:     #FF5555
+!*color9:     #FF6E67
+!*color2:     #50FA7B
+!*color10:    #5AF78E
+!*color3:     #F1FA8C
+!*color11:    #F4F99D
+!*color4:     #BD93F9
+!*color12:    #CAA9FA
+!*color5:     #FF79C6
+!*color13:    #FF92D0
+!*color6:     #8BE9FD
+!*color14:    #9AEDFE
+!*color7:     #BFBFBF
+!*color15:    #E6E6E6
+!
+!Sxiv.background:	#000
+
+
+!!! colorscheme : gruvbox
+!*foreground: #ebdbb2
+!*background: #1d2021
+!*cursorColor: #fb4934
+!
+!*color0: #282828
+!*color1: #cc241d
+!*color2: #98971a
+!*color3: #d79921
+!*color4: #458588
+!*color5: #b16286
+!*color6: #689d6a
+!*color7: #a89984
+!
+!*color8: #928374
+!*color9: #fb4934
+!*color10: #b8bb26
+!*color11: #fabd2f
+!*color12: #83a598
+!*color13: #d3869b
+!*color14: #8ec07c
+!*color15: #ebdbb2
+!
+!! colorscheme : palenight
+!*foreground:   #ACB0D0
+!*background:   #222638 
+!*cursorColor:  #ACB0D0 
+!
+!*color0: #32344a
+!*color1: #F7768E
+!*color2: #9ECE6A
+!*color3: #E0AF68
+!*color4: #7AA2F7
+!*color5: #AD8EE6
+!*color6: #449DAB
+!*color7: #9699A8
+!
+!*color8:  #444B6A 
+!*color9:  #FF7A93
+!*color10: #B9F27C
+!*color11: #FF9E64
+!*color12: #7DA6FF
+!*color13: #BB9AF7
+!*color14: #0DB9D7
+!*color15: #ACB0D0
+!
+!
+*background: #1E1E2E
+*foreground: #CDD6F4
+
+! black
+*color0: #45475A
+*color8: #585B70
+
+! red
+*color1: #F38BA8
+*color9: #F38BA8
+
+! green
+*color2: #A6E3A1
+*color10: #A6E3A1
+
+! yellow
+*color3: #F9E2AF
+*color11: #F9E2AF
+
+! blue
+*color4: #89B4FA
+*color12: #89B4FA
+
+! magenta
+*color5: #F5C2E7
+*color13: #F5C2E7
+
+! cyan
+*color6: #94E2D5
+*color14: #94E2D5
+
+! white
+*color7: #BAC2DE
+*color15: #A6ADC8
