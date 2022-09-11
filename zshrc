@@ -7,11 +7,13 @@
 
 # exports
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin${PATH:+:${PATH}}"
+# default programs defined
 export EDITOR="nvim"
 export BROWSER="qutebrowser"
-export ZSH="$HOME/.oh-my-zsh"
 export TERM="st-256color"
+# Beautifying less 
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
 export LESS_TERMCAP_me=$'\e[0m'
@@ -21,14 +23,15 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 autoload -U colors && colors    # Load colors
-#PS1="%B%{$fg[red]%}%{$fg[magenta]%}%{$fg[white]%}%{$fg[cyan]%}%{$fg[blue]%}%~%{$fg[black]%}]%{$fg[green]%}#%{$fg[red]%} "
-# History in cache directory:
+#PS1="%B%{$fg[red]%}%{$fg[magenta]%}%{$fg[white]%}%{$fg[cyan]%}%{$fg[blue]%}%~%{$fg[black]%} >%{$fg[green]%} #%{$fg[red]%} "
+ZSH_THEME="robbyrussell"
+# History in cache directory [ I like big numbers :) ] :
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
-ZSH_THEME="duellj"
+
+# setup the git plugin (the only reason I use OMZ):
 plugins=(git)
-source $ZSH/oh-my-zsh.sh 
 
 # autocompletion
 autoload -U compinit
@@ -39,6 +42,7 @@ _comp_options+=(globdots)
 bindkey -v
 export KEYTIMEOUT=1
 
+# keymap selection
 function zle-keymap-select () {
 	case $KEYMAP in
 		vicmd) echo -ne '\e[1 q';;
@@ -63,23 +67,27 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+# source the OMZ sh file
+source $ZSH/oh-my-zsh.sh
 
+# aliases (not a lot)
 alias ls="exa --icons"
 alias vim="nvim"
 alias cat="bat --theme base16"
 alias hex="colorscript -e hex"
 alias ed="ed -p ' >> '"
 alias keybinds="vim ~/.config/sxhkd/sxhkdrc"
-alias polybarconfig="vim ~/.config/polybar/config"
+alias polyconfig="vim ~/.config/polybar/config"
 alias zshrc="vim ~/.zshrc"
 alias top="btm"
-alias alacyml="vim ~/.config/alacritty/alacritty.yml"
+alias alacritty.yml="vim ~/.config/alacritty/alacritty.yml"
 alias colhex="colorscript -e hex"
 alias vimconfig="vim ~/.config/nvim/init.vim"
 alias grep="rg"
 alias matrix='unimatrix -s 95'
 alias nc="newsboat"
 alias col="colorscript -e colortest"
+
 
 # shell-color-scripts at startup
 colorscript random
@@ -114,8 +122,10 @@ bindkey '^e' edit-command-line
 
 # set vi mode function
 set -o vi
+
+# source some theming plugins
 source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
-
+# And of course..
 eval $(thefuck --alias)
