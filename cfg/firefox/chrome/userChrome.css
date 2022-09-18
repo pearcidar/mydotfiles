@@ -1,0 +1,388 @@
+/* imports the user facing variables */
+@import url(userVariables.css);
+
+/*#TabsToolbar { visibility: collapse !important; }
+
+/* CUSTOM ACCENT COLORS -------------------------------------------------------------------------------------- */
+
+:root {
+    --lwt-toolbarbutton-icon-fill-attention: var(--custom-accent-color, #0a84ff) !important;
+    --button-primary-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+    --button-primary-hover-bgcolor: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    --button-primary-active-bgcolor: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+    /* --button-primary-color: var(--custom-button-text-color) !important; */
+}
+
+
+.urlbarView-url { color: var(--custom-accent-color, #0a84ff) !important; }
+:root {
+  --buttons-primary-button-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+  --buttons-primary-button-hover-bgcolor: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+  --buttons-primary-button-active-bgcolor: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+  --checkbox-checked-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+  --checkbox-checked-hover-bgcolor: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+  --checkbox-checked-active-bgcolor: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+  --lwt-brighttext-url-color: var(--custom-accent-color, #0a84ff) !important;
+  --lwt-popup-brighttext-url-color: var(--custom-accent-color, #0a84ff) !important;
+  --focus-outline-color: var(--custom-accent-color, #0a84ff) !important;
+  --toolbar-field-focus-border-color: var(--custom-accent-color, #0a84ff) !important;
+  /*Star Highlight & Download Finished*/
+  --lwt-toolbarbutton-icon-fill-attention: var(--custom-accent-color, #0a84ff) !important;
+  --lwt-toolbar-field-icon-fill-attention: var(--custom-accent-color, #0a84ff) !important; 
+}
+
+
+/* colors various popup windows (e.g. edit bookmarks, close window menus) */
+@-moz-document regexp("^(about:|chrome:|moz-extension:).*") {
+  html:not([role="dialog"]),
+  html:not([role="dialog"]) *,
+  html:not([role="dialog"]) body.activity-stream,
+  window:not([chromehidden]),
+  window:not([chromehidden]) > dialog
+  {
+    --in-content-primary-button-background: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-primary-button-background-hover: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    --in-content-primary-button-background-active: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+  }
+}
+
+
+/* color the update/info dot in app menu */
+:root{
+  --panel-banner-item-info-icon-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+  --panel-banner-item-update-supported-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+}
+
+
+/* color the left strip in notification banners (purple-yellow gradient -> accent color) */
+.infobar::before {background-image: linear-gradient(var(--custom-accent-color, #0a84ff), var(--custom-accent-color, #0a84ff)) !important;}
+
+
+/* replace the mozilla purple to yellow gradient in appmenu */
+/* (enabled by default for default, light, and dark themes) */
+:root:not(:-moz-lwtheme),
+:root[lwt-default-theme-in-dark-mode],
+/* based on https://github.com/black7375/Firefox-UI-Fix/issues/288 */
+:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"], /* Light Theme */
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] /* Dark Theme */ {
+  --panel-separator-zap-gradient: linear-gradient(var(--custom-accent-color, #0a84ff), var(--custom-accent-color, #0a84ff)) !important;
+}
+/* can be manually overridden by pref */
+@supports -moz-bool-pref("browser.appmenugradient.overwrite") {
+  :root{
+    --panel-separator-zap-gradient: linear-gradient(var(--custom-accent-color, #0a84ff), var(--custom-accent-color, #0a84ff)) !important;
+  }
+}
+
+
+/* TITLE BAR ----------------------------------------------------------------------------------------------- */
+
+/* override mozilla min/max/close buttons with default ones (only relevant on linux) */
+@media (-moz-gtk-csd-available) {
+  @supports -moz-bool-pref("browser.windowcontrolbuttons.overwrite") {
+    .titlebar-button:-moz-lwtheme {
+      appearance: auto !important;
+    }
+    .titlebar-min:-moz-lwtheme, .titlebar-max:-moz-lwtheme, .titlebar-restore:-moz-lwtheme, .titlebar-close:-moz-lwtheme {
+      list-style-image: none !important;
+    }
+    .titlebar-button:-moz-lwtheme:hover, .titlebar-button:-moz-lwtheme:hover:active {
+    background-color: unset !important;
+    color: unset !important;
+    }
+  }
+}
+
+
+/* remove window corner rounding in gtk */
+:root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) #navigator-toolbox:-moz-lwtheme,
+:root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) ::backdrop {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+
+/* TAB BAR ------------------------------------------------------------------------------------------------- */
+
+/* sets the height of the tab toolbar
+otherwise will change height when tabs overflow [FIXED] */
+/* tab height when playing audio issue fixed in FF 96.0.2+ */
+/* https://bugzilla.mozilla.org/show_bug.cgi?id=1714276 */
+/* height change when tab overflow fixed in FF 97 beta+ */
+#TabsToolbar {height: var(--tab-bar-height, 35px) !important;}
+:root{
+  /* default value for tab-min-height = 36px */
+  --tab-min-height: var(--tab-bar-height, 35px) !important;
+}
+
+
+/* Reduce left spacer on tab bar */
+@supports (not (-moz-osx-font-smoothing: auto)) and (not (-moz-bool-pref("browser.lefttabspacer.enable"))) {
+  .titlebar-spacer[type="pre-tabs"] {
+    display: none !important;
+  }
+}
+
+
+/* Tab - Connect to window */
+.tab-background {
+  border-radius: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.tab-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.tab-stack {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* adds the little colored strip on top of the selected tab */
+/*.tab-background:is([selected],[multiselected]) {
+  box-shadow: inset 0 2px var(--custom-accent-color, #0a84ff) !important;
+  border: 0 !important;
+}
+*/
+
+/* make context line (from container tabs) visible */
+.tabbrowser-tab[selected] .tab-context-line {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-radius: 0 !important;
+}
+
+
+/* realign the selected tab so it doesnt droop down by 2px */
+.tabbrowser-tab[visuallyselected="true"]{
+  z-index: 0 !important;
+}
+
+
+/* neighbouring tabs should "pinch" together */
+.tabbrowser-tab {padding-inline: 0 !important;}
+
+
+/* Unselected Tab - Divide line */
+.tab-content::before,
+.tab-content::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  background-color: var(--custom-tab-divider-color, #535354) !important;
+  width: 1px !important;
+  height: 40px !important;
+  transform: translateY(-20px) !important;
+  opacity: 0 !important;
+  transition: opacity 1s var(--ease-basic) !important;
+}
+.tab-content::before {left: 0 !important;}
+.tab-content::after {right: 0 !important;}
+
+.tabbrowser-tab[visuallyselected][style*=transform] + .tabbrowser-tab[style*=transform] .tab-content::after,
+.tabbrowser-tab[style*=transform]:not([visuallyselected]) .tab-content::before,
+.tabbrowser-tab[style*=transform] + .tabbrowser-tab:not([visuallyselected]) .tab-content::before,
+.tabbrowser-tab:not([visuallyselected]):not(:hover):not([multiselected]) + .tabbrowser-tab:not([visuallyselected]):not(:hover):not([multiselected]) .tab-content::before,
+#tabbrowser-tabs[hasadjacentnewtabbutton]:not([overflow]) .tabbrowser-tab[last-visible-tab]:not([visuallyselected]):not(:hover):not([multiselected]) .tab-content::after {
+  opacity: var(--tab-separator-opacity) !important;
+}
+
+
+/* squares the mute button on hover */
+.tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+  border-radius: 0 !important;
+}
+
+
+/* NAV BAR ---------------------------------------------------------------------------------------------------- */
+
+:root{
+  /* reduce padding between menu items */
+  --arrowpanel-menuitem-padding: var(--custom-menuitem-padding-vertical, 6px) var(--custom-menuitem-padding-horizontal, 8px) !important;
+  --arrowpanel-menuitem-margin: 0 var(--custom-menuitem-margin, 4px) !important;
+  --panel-subview-body-padding: var(--custom-menuitem-margin, 4px) 0 !important;
+
+
+  /* square the off most of the UI (selection buttons on hover, context menus, hamburger menus, etc) */
+  --toolbarbutton-border-radius: 0 !important;
+  --arrowpanel-menuitem-border-radius: 0 !important;
+  --arrowpanel-border-radius: 0 !important;
+  --tab-border-radius: 0 !important;
+  --subviewbutton-border-radius: 0 !important;
+}
+
+
+/* squares the profile picture on toolbar if logged into sync AND not disabled by pref */
+@supports not -moz-bool-pref("browser.syncavatar.round") {
+  #fxa-avatar-image {border-radius: 0 !important;}
+}
+
+
+/* scales the profile picture, since it is quite small */
+#fxa-avatar-image {transform: scale(var(--sync-avatar-scale)) !important;}
+
+
+/* SUB MENUS --------------------------------------------------------------------------------------------- */
+
+/* more padding code for sub menus */
+.panel-header {
+  padding: var(--custom-menuitem-margin, 4px) !important;
+  padding-bottom: 0 !important;
+}
+.subviewbutton-back {margin: 0 0 !important;}
+
+
+/* removes the rounded corners from (bookmarks) menu */
+.menupopup-arrowscrollbox, .panel-arrowcontainer, .panel-arrowbox, .panel-arrowscrollbox, menupopup {
+  border-radius: 0 !important;
+}
+
+
+/* removes rounded corner from selection box in side bookmarks menu */
+menupopup menuitem, menupopup menu {border-radius: 0 !important;}
+
+
+/* square input fields in the edit bookmarks menu */
+#editBMPanel_namePicker {border-radius: 0 !important;}
+#editBMPanel_folderMenuList {border-radius: 0 !important;}
+#editBMPanel_tagsField {border-radius: 0 !important;}
+#editBMPanel_tagsSelector {border-radius: 0 !important;}
+#editBMPanel_locationField {border-radius: 0 !important;}
+#editBMPanel_keywordField {border-radius: 0 !important;}
+
+
+/* square off aspects of the download menu (i.e. selection boxes, open in folder button) */
+.download-state, .downloadButton {border-radius: 0 !important;}
+
+.downloadProgress {
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.downloadProgress[paused] {border-radius: 0 !important;}
+.downloadProgress:not([value="0"])::-moz-progress-bar {border-radius: 0 !important;}
+.downloadProgress::-moz-progress-bar {border-radius: 0 !important;}
+.downloadProgress[paused]::-moz-progress-bar {border-radius: 0 !important;}
+
+
+/* square off the toggle switch for "enhanced tracking protection" */
+.protections-popup-tp-switch, .protections-popup-tp-switch::before {border-radius: 0 !important;}
+
+
+/* square the permissions popup (e.g. autoplay blocked) */
+#permission-popup-menulist {border-radius: 0 !important;}
+
+
+/* square permission popups for webRTC (screen sharing and voice) */
+#webRTC-selectMicrophone-menulist {border-radius: 0 !important;}
+#webRTC-selectWindow-menulist {border-radius: 0 !important;}
+#webRTC-previewVideo {border-radius: 0 !important;}
+
+
+/* square the fullscreen and zoom reset */
+#appMenu-zoomReset-button2 > .toolbarbutton-text,
+#appMenu-fullscreen-button2 > .toolbarbutton-icon {
+  border-radius: 0 !important;
+}
+
+/* square the selection in the "List All Tabs" menu */
+.all-tabs-item {
+  border-radius: 0 !important;
+  margin-inline: var(--custom-menuitem-margin, 4px) !important;
+}
+
+
+/* MISC ITEMS ------------------------------------------------------------------------------------------- */
+
+/* square "close tabs and quit" window and buttons (and prob other dialog boxes) */
+.dialogBox {border-radius: 0 !important;}
+button {border-radius: 0 !important;}
+
+
+/* square checkboxes */
+.checkbox-check {border-radius: 0 !important;}
+#checkbox {border-radius: 0 !important;}
+
+
+/* square dropdown selection boxes */
+select {border-radius: 0 !important;}
+
+
+/* square selections, checkboxes, and nav buttons on the print page */
+.toggle-group-label {border-radius: 0 !important;} 
+.photon-number {border-radius: 0 !important;}
+#headers-footers-enabled {border-radius: 0 !important;}
+#backgrounds-enabled {border-radius: 0 !important;}
+.toolbarButton:not(:hover) {background-color: #2b2a33 !important;}
+#custom-range {border-radius: 0 !important;}
+
+
+/* autosave password notification input fields */
+#password-notification-username {border-radius: 0 !important;}
+#password-notification-password {border-radius: 0 !important;}
+
+
+/* searchbox and buttons in find bar (ctrl+F) */
+.findbar-textbox {border-radius: 0 !important;}
+toolbarbutton {border-radius: 0 !important;}
+
+
+/* certain new folder and login field popup dialogs */
+#loginTextbox {border-radius: 0 !important;}
+#password1Textbox {border-radius: 0 !important;}
+
+
+/* density options in "Customize Toolbar" */
+#customization-uidensity-menuitem-compact {border-radius: 0 !important;}
+#customization-uidensity-menuitem-normal {border-radius: 0 !important;}
+#customization-uidensity-menuitem-touch {border-radius: 0 !important;}
+
+
+/* square popup when entering full screen video */
+#fullscreen-warning {border-radius: 0 !important;}
+
+
+/* square dismissable "show me how" notification messages */
+notification-message {border-radius: 0 !important;}
+.animated {border-radius: 0 !important;}
+.infobar {border-radius: 0 !important;}
+.infobar::before {
+  border-start-start-radius: 0 !important;
+  border-end-start-radius: 0 !important;
+}
+
+
+/* clear history popup and warnings */
+#sanitizeDurationChoice {border-radius: 0 !important;}
+#sanitizeEverythingWarningBox {border-radius: 0 !important;}
+
+
+/* url preview on hover */
+#statuspanel-label {border-radius: 0 !important;}
+
+/* ROOT - VARS */
+*|*:root {
+ --tab-min-height:      25px !important; /* adjust */
+ --tab-min-width:       60px !important; /* adjust */
+}
+
+/* TABS: height */
+#tabbrowser-tabs,
+#tabbrowser-tabs > #tabbrowser-arrowscrollbox,
+.tabbrowser-tabs .tabbrowser-tab {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+
+/* THUNDERBIRD SPECIFIC ------------------------------------------------------------------------------ */
+/* custom color for tab line */
+:root {--tabline-color: var(--custom-accent-color, #0a84ff) !important;}
+
+/* the loading/compacting progress bar on bottom right */
+.progressmeter-statusbar {border-radius: 0 !important;}
+.progressmeter-statusbar:not([value="0"])::-moz-progress-bar {border-radius: 0 !important;}
+
+

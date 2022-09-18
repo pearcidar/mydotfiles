@@ -1,0 +1,383 @@
+/* imports the user facing variables */
+@import url(userVariables.css);
+
+
+
+/* CUSTOM ACCENT COLORS -------------------------------------------------------------------------------------- */
+
+@-moz-document regexp("^(about:|chrome:|moz-extension:).*") {
+  html:not([role="dialog"]),
+  html:not([role="dialog"]) *,
+  html:not([role="dialog"]) body.activity-stream,
+  window:not([chromehidden]),
+  window:not([chromehidden]) > dialog
+  {
+    --in-content-primary-button-background: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-primary-button-background-hover: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    --in-content-primary-button-background-active: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+
+    --in-content-item-selected: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-border-highlight: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-border-hover: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    /* --in-content-border-focus: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important; */
+    --in-content-border-focus: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-border-active: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-border-active-shadow: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-category-outline-focus: 1px solid transparent !important;
+    --in-content-accent-color: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-table-header-background: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-link-color: var(--custom-accent-color, #0a84ff) !important;
+    --in-content-link-color-hover: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
+    --newtab-focus-border: var(--in-content-border-focus) !important;
+    --newtab-focus-border-selected: var(--custom-accent-color) !important;
+    --newtab-textbox-focus-color: var(--in-content-border-focus) !important;
+    --newtab-primary-action-background: var(--custom-accent-color) !important;
+  }
+}
+
+@-moz-document url("chrome://global/content/commonDialog.xhtml"){
+  #commonDialog[subdialog] checkbox {
+    --checkbox-checked-bgcolor: var(--custom-accent-color, #0a84ff) !important;
+    --checkbox-checked-hover-bgcolor: color-mix(in srgb, white 50%, var(--custom-accent-color, #0a84ff)) !important;
+    --checkbox-checked-active-bgcolor: color-mix(in srgb, white 65%, var(--custom-accent-color, #0a84ff)) !important;
+  }
+}
+
+.topsite-form .form-wrapper input[type="text"]:focus-visible {
+  outline: none !important;
+  border-color: var(--newtab-focus-border) !important;
+}
+
+.showPrivate .search-handoff-button.focused {
+  outline: 0;
+  border: 1px solid var(--newtab-focus-border) !important;
+  box-shadow: 0 0 0 2px var(--newtab-focus-outline) !important;
+}
+  
+::-moz-progress-bar{background-color: var(--custom-accent-color, #0a84ff) !important;}
+
+
+/* NEW TAB PAGE ---------------------------------------------------------------------------------------------- */
+
+@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing) {
+    /* square the search box  corners */
+    body .search-handoff-button {border-radius: 0 !important;}
+
+    /* square the settings button and checkboxes / buttons / selectors inside its menu */
+    .personalize-button {border-radius: 0 !important;}
+    .close-button {border-radius: 0 !important;}
+    .selector {border-radius: 0 !important;}
+    .sponsored-checkbox{border-radius: 0 !important;}
+
+    /* square the toggle button for above */
+    .slider {border-radius: 0 !important;}
+    .slider::before {
+      border-radius: 0 !important;
+      background: #fff !important;
+    }
+
+    /* square all the 3 dot menus */
+    .context-menu-button {border-radius: 0 !important;}
+    .context-menu {border-radius: 0 !important;}
+    
+    /* square the shortcuts: icons, background, and selection box */
+    .tile {border-radius: 0 !important;}
+    .top-site-icon {border-radius: 0 !important;}
+    .icon-wrapper {border-radius: 0 !important;}
+    .top-site-outer {border-radius: 0 !important;}
+
+    /* square the "suggested by pocket" cards and images */
+    .ds-card {border-radius: 0 !important;}
+    img {border-radius: 0px !important;}
+    
+    /* square all the recent activity cards and images */
+    .card {border-radius: 0 !important;}
+    .card-outer {border-radius: 0 !important;}
+    .card-preview-image-outer {border-radius: 0 !important;}
+    .card-context {border-radius: 0 !important;}
+    .sections-list, .section-empty-state {border-radius: 0 !important;}
+    .modal {border-radius: 0 !important;}
+    
+    /* square the VPN button/infobox in private browsing */
+    #private-browsing-vpn-link {border-radius: 0 !important;}
+    .info, .promo {border-radius: 0 !important;}
+
+
+    /* add hover/click colors on new tab page [workaround] */
+    .slider:hover {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.4) !important;}
+    .slider:active {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.6) !important;}
+    .sponsored-checkbox:checked:hover {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.4) !important;}
+    .sponsored-checkbox:checked:active {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.6) !important;}
+    .sponsored-checkbox:hover {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.4) !important;}
+    .sponsored-checkbox:active {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.6) !important;}
+    .selector:hover {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3) !important;}
+    .selector:active {box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.5) !important;}
+}
+
+
+/* SETTINGS PAGE ------------------------------------------------------------------------------------------- */
+
+@-moz-document url(about:preferences), url(about:preferences#general), url(about:preferences#home),
+url(about:preferences#search), url(about:preferences#privacy), url(about:preferences#sync), 
+url(about:preferences#moreFromMozilla), url(about:addons){
+  /* square checkboxes */
+  .checkbox-check {border-radius: 0 !important;}
+  #automaticallySubmitCrashesBox {border-radius: 0 !important;}
+
+  /* square selection buttons */
+  button {border-radius: 0 !important;}
+  richlistitem {border-radius: 0 !important;}
+  .sidebar-footer-link {border-radius: 0 !important;}
+
+  /* square toggle buttons */
+  .toggle-button {border-radius: 0 !important;}
+  .toggle-button::before {border-radius: 0 !important;}
+
+  /* square search engines table on about:preferences#search page */
+  #engineList {border-radius: 0 !important;}
+
+  /* Tracking Protection options on about:preferences#privacy page */
+  .content-blocking-category {border-radius: 0 !important;}
+  .content-blocking-warning {border-radius: 0 !important;}
+
+  /* infoboxes (e.g. settings required by addon) */
+  #browserContainersExtensionContent {border-radius: 0 !important;}
+  #firefoxSuggestInfoBox {border-radius: 0 !important;}
+  #updateSettingsContainer {border-radius: 0 !important;}
+
+  /* folder selection and table for Files and Applications */
+  #downloadFolder {border-radius: 0 !important;}
+  #handlersView {border-radius: 0 !important;}
+
+  /* input, info boxes, and profile on sync page */
+  #fxaSyncComputerName {border-radius: 0 !important;}
+  .sync-configured {border-radius: 0 !important;}
+  .fxaProfileImage {border-radius: 0 !important;}
+
+  /* more from mozilla page */
+  .qr-code-box {border-radius: 0 !important;}
+  .qr-code-box-image {border-radius: 0 !important;}
+
+  
+  /* enterprise policies infobox */
+  #policies-container {border-radius: 0 !important;}
+  
+  /* website appearance selections */
+  .web-appearance-choice {border-radius: 0 !important;}
+
+  /* dropdown selectors in tables */
+  menupopup {--panel-border-radius: 0 !important;}
+}
+
+
+@-moz-document url(about:preferences), url(about:preferences#general), url(about:preferences#home),
+url(about:preferences#search), url(about:preferences#privacy), url(about:preferences#sync){
+  
+  /* match toggle buttons to normal button look (only about:preferences) */
+  input[type="checkbox"].toggle-button::before{
+    height: 10px !important;
+    width: 10px !important;
+    margin-top: 4px !important;
+    margin-left: 2px !important;
+  }
+}
+
+
+/* square popup windows and buttons */
+@-moz-document regexp("^(about:|chrome:|moz-extension:).*") {
+    richlistbox {border-radius: 0 !important;}
+    button {border-radius: 0 !important;}
+    .dialogBox {border-radius: 0 !important;}
+    menulist {border-radius: 0 !important;}
+    checkbox {border-radius: 0 !important;}
+    .checkbox-check {border-radius: 0 !important;}
+    listheader {border-radius: 0 !important;}
+    search-textbox {border-radius: 0 !important;}
+    #url {border-radius: 0 !important;}
+    tree {border-radius: 0 !important;}
+
+    /* network settings popup */
+    #networkProxyNone {border-radius: 0 !important;}
+    #networkProxyAutoconfigURL {border-radius: 0 !important;}
+    #networkProxySOCKS_Port {border-radius: 0 !important;}
+    #networkProxySOCKS {border-radius: 0 !important;}
+    #networkProxySSL_Port {border-radius: 0 !important;}
+    #networkProxySSL {border-radius: 0 !important;}
+    #networkProxyHTTP_Port {border-radius: 0 !important;}
+    #networkProxyHTTP {border-radius: 0 !important;}
+
+    /* saved addresses popup */
+    #given-name {border-radius: 0 !important;}
+    #family-name {border-radius: 0 !important;}
+    #street-address {border-radius: 0 !important;}
+    #address-level2 {border-radius: 0 !important;}
+    #address-level1 {border-radius: 0 !important;}
+    #postal-code {border-radius: 0 !important;}
+    #organization {border-radius: 0 !important;}
+    #country {border-radius: 0 !important;}
+    #tel {border-radius: 0 !important;}
+    #email {border-radius: 0 !important;}
+
+    /* saved credit cards popup */
+    #cc-number {border-radius: 0 !important;}
+    #cc-exp-month {border-radius: 0 !important;}
+    #cc-exp-year {border-radius: 0 !important;}
+    #cc-name {border-radius: 0 !important;}
+    #cc-type {border-radius: 0 !important;}
+
+    /* primary password dialog */
+    #message {border-radius: 0 !important;}
+    #pw1 {border-radius: 0 !important;}
+    #pw2 {border-radius: 0 !important;}
+    #pwmeter {
+      appearance: none !important;
+      height: 0.35em !important;
+      border: none !important;
+      vertical-align: 0 !important;
+      margin: 0.5em 0 !important;
+    }
+
+    /* custom color selection */
+    #foregroundtextmenu {border-radius: 0 !important;}
+    #backgroundmenu {border-radius: 0 !important;}
+    #unvisitedlinkmenu {border-radius: 0 !important;}
+    #visitedlinkmenu {border-radius: 0 !important;}
+
+    /* clear history warning popup */
+    #sanitizeEverythingWarningBox {border-radius: 0 !important;}
+
+}
+
+
+/* ADDONS PAGE --------------------------------------------------------------------------------------------- */
+
+@-moz-document url(about:addons) {
+  /* square search box */
+  search-textbox {border-radius: 0 !important;}
+
+  /* square the context menus (3 dots and settings gear) */
+  panel-list {border-radius: 0 !important;}
+
+  /* square the info boxes / banners */
+  .discopane-notice {border-radius: 0 !important;}
+  .container {border-radius: 0 !important;}
+
+  /* square the addons and theme cards */
+  .card-heading-image {border-radius: 0 !important;}
+  .card {border-radius: 0 !important;}
+
+  /* square selection buttons */
+  button {border-radius: 0 !important;}
+  richlistitem {border-radius: 0 !important;}
+  menulist {border-radius: 0 !important;}
+  .sidebar-footer-link {border-radius: 0 !important;}
+
+  /* square toggle buttons */
+  .toggle-button, .toggle-button::before {border-radius: 0 !important;}
+  
+  /* available addons update badge */
+  .category[badge-count]::after {border-radius: 0 !important;}
+
+}
+
+
+/* ABOUT CONFIG PAGE ---------------------------------------------------------------------------------------- */
+
+@-moz-document url(about:config) {
+  /* square everything except radio buttons */
+  #about-config-search {border-radius: 0 !important;}
+  #about-config-show-only-modified {border-radius: 0 !important;}
+  #showWarningNextTime {border-radius: 0 !important;}
+  button {border-radius: 0 !important;}
+}
+
+
+/* DOWNLOADS ------------------------------------------------------------------------------------------------ */
+
+@-moz-document url(about:downloads) {
+  /* square buttons and boxes*/
+  .button-box {border-radius: 0 !important;}
+  richlistbox {border-radius: 0 !important;}
+  .downloadProgress {border-radius: 0 !important;}
+  .downloadProgress[paused] {border-radius: 0 !important;}
+  .downloadProgress:not([value="0"])::-moz-progress-bar {border-radius: 0 !important;}
+  .downloadProgress::-moz-progress-bar {border-radius: 0 !important;}
+  .downloadProgress[paused]::-moz-progress-bar {border-radius: 0 !important;}
+}
+
+
+/* OTHER INTERNAL PAGES ------------------------------------------------------------------------------------- */
+
+@-moz-document url(about:buildconfig), url(about:compat), url(about:crashes), url(about:debugging), 
+url(about:debugging#/setup), url(about:debugging#/runtime/this-firefox), url(about:devtools), 
+ url(about:logins), url(about:networking), url(about:policies), url(about:profiles),
+url(about:profiling), url(about:protections), url(about:serviceworkers), url(about:studies), 
+url(about:support), url(about:telemetry), url(about:unloads), url(about:url-classifier), 
+url(about:webrtc), url(about:welcome) {
+  *{border-radius: 0 !important;}
+}
+
+
+/* SERVER NOT FOUND PAGE ------------------------------------------------------------------------------------- */
+
+@supports (-moz-appearance:none) {
+  .primary.try-again {border-radius: 0 !important;}
+}
+
+
+/* WARNING SECURITY RISK PAGE --------------------------------------------------------------------------------- */
+
+@supports (-moz-appearance:none) {
+  .primary.try-again {border-radius: 0 !important;}
+  #returnButton {border-radius: 0 !important;}
+  #advancedButton {border-radius: 0 !important;}
+  #exceptionDialogButton {border-radius: 0 !important;}
+  #advancedPanelReturnButton {border-radius: 0 !important;}
+  #automaticallyReportBlockingInFuture {border-radius: 0 !important;}
+}
+
+
+/* Restart Firefox page after update ------------------------------------------------------------------------- */
+
+@supports (-moz-appearance:none) {
+  #restart {border-radius: 0 !important;}
+}
+
+
+/* SCREENSHOT PAGE ------------------------------------------------------------------------------------------ */
+
+@supports (-moz-appearance:none) {
+  .cancel-shot {border-radius: 0 !important;}
+  .all-buttons-container {border-radius: 0 !important;}
+  .visible {border-radius: 0 !important;}
+  .full-page {border-radius: 0 !important;}
+  .highlight-button-cancel {border-radius: 0 !important;}
+  .highlight-button-copy {border-radius: 0 !important;}
+  .highlight-button-download {border-radius: 0 !important;}
+  .preview-buttons {border-radius: 0 !important;}
+  .preview-image-wrapper {border-radius: 0 !important;}
+}
+
+
+/* PICTURE IN PICTURE PAGE ----------------------------------------------------------------------------------- */
+
+@supports (-moz-appearance:none) {
+  .pip-small.clickable {border-radius: 0 !important;}
+  .pip-expanded {border-radius: 0 !important;}
+  .pip-explainer {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;}
+}
+
+
+/* READER MODE ----------------------------------------------------------------------------------------------- */
+
+@supports (-moz-appearance:none) {
+  .reader-toolbar {border-radius: 0 !important;}
+  .dropdown-popup {border-radius: 0 !important;}
+  .radiorow > label {border-radius: 0 !important;}
+  .font-size-value {border-radius: 0 !important;}
+  .content-width-value {border-radius: 0 !important;}
+  .line-height-value {border-radius: 0 !important;}
+}

@@ -1,0 +1,34 @@
+
+/* USER FACING VARIABLES -------------------------------------------------------------------------------------- */
+/* this file does NOT have to be updated between versions */
+
+/* NOTE: restart Firefox to apply any changes */
+
+:root {
+
+
+/* custom accent color to be used across Firefox*/
+/* use hexcode or color name */
+  --custom-accent-color: #0a84ff;
+
+
+/* color of the tab dividers / separators */
+/* set variable = none, to disable dividers */
+  --custom-tab-divider-color: #535354;
+
+
+/* sets the height of the tabs toolbar */
+/* legacy height (<= v1.6.2) = 33px */
+  --tab-bar-height: 35px;
+
+
+/* set the size of sync profile pic */
+/* 1.0 = 100% scale */
+  --sync-avatar-scale: 1.0;
+  
+/* custom paddings/margins for the menu itmes */
+/* for reference: */
+  --custom-menuitem-padding-vertical: 6px;
+  --custom-menuitem-padding-horizontal: 8px;
+  --custom-menuitem-margin: 4px;
+

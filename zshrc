@@ -92,6 +92,9 @@ alias col="colorscript -e colortest"
 # shell-color-scripts at startup
 colorscript random
 
+# Use sudo as alias of doas:
+alias sudo="doas"
+
 #
 # # ex - archive extractor
 # # usage: ex <file>
