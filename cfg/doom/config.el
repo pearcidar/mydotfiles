@@ -1,8 +1,68 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(add-to-list 'load-path "~/.doom.d/lisp/")
+
+(use-package all-the-icons)
+
 ;; Fonts
-(setq doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 15  :weight 'semi-light)
+(setq doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 15  :weight 'regular)
       doom-variable-pitch-font (font-spec :family "FantasqueSansMono Nerd Font" :size 16))
+
+
+; Exwm (add the package in packages.el, if you want to use it)
+;
+
+(setq initial-buffer-choice "dashboard")
+
+
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-example)
+(require 'exwm-randr)
+(setq exwm-randr-workspace-monitor-plist '(0 "VGA-1"))
+(add-hook 'exwm-randr-screen-change-hook
+          (lambda ()
+            (start-process-shell-command
+            "xrandr" nil "xrandr --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal")))
+(exwm-randr-enable)
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+
+(setq exwm-workspace-index-map
+(lambda (index)
+(let ((named-workspaces ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9"]))
+(if (< index (length named-workspaces))
+(elt named-workspaces index)
+(number-to-string index)))))
+
+;; easy window moving with buffer-move
+
+(exwm-input-set-key (kbd "<C-s-up>") 'buf-move-up)
+(exwm-input-set-key (kbd "<C-s-down>") 'buf-move-down)
+(exwm-input-set-key (kbd "<C-s-right>") 'buf-move-right)
+(exwm-input-set-key (kbd "<C-s-left>") 'buf-move-left)
+;; easy window switching with windmove
+
+(exwm-input-set-key (kbd "<s-up>") 'windmove-up)
+(exwm-input-set-key (kbd "<s-down>") 'windmove-down)
+(exwm-input-set-key (kbd "<s-right>") 'windmove-right)
+(exwm-input-set-key (kbd "<s-left>") 'windmove-left)
+
+
+(defun launch-terminal ()
+(interactive)
+(start-process-shell-command "st" nil "st"))
+
+
+(defun launch-qute ()
+(interactive)
+(start-process-shell-command "qutebrowser" nil "qutebrowser"))
+
+(exwm-input-set-key (kbd "s-# t") 'launch-terminal)
+(exwm-input-set-key (kbd "s-# w") 'launch-qute)
+
+
+(call-process "/usr/bin/bash" "~/.local/share/dwm/emacsstart.sh")
 
 ;; Doom-theme (I like toyko-night)
 (setq doom-theme 'doom-tokyo-night)
@@ -15,6 +75,7 @@
 (setq org-directory "~/.config/org/"
       org-agenda-files '("~/.config/org/agenda.org"))
 
+; Org-Bullets
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
@@ -26,14 +87,32 @@
 
 ;; doom-dashboard
 (setq fancy-splash-image "~/.emacs.d/emacs.png")
-;;(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
 (setq doom-fallback-buffer-name "*dashboard*")
 
+;; Dashboard
+(require 'dashboard)
+(require 'page-break-lines)
+(page-break-lines-mode)
+(dashboard-setup-startup-hook)
+(setq dashboard-items '((recents  . 10)
+                        (projects . 5)))
+
+(dashboard-modify-heading-icons '((recents . "file-text")))
+(setq dashboard-startup-banner "~/.emacs.d/emacsgnu.png")  ;; use custom image as banner
+(setq dashboard-center-content nil)
+(setq dashboard-show-shortcuts t)
+
+;; Mood-line
+(mood-line-mode)
+(display-time-mode 1)
+
 ;; cursor settings
-(setq evil-insert-state-cursor '(box "#f7768e")
+(setq evil-insert-state-cursor '(box "#e0af68")
       evil-normal-state-cursor '(box "#9ece6a"))
 (blink-cursor-mode 1)
+
+;; Dired Settings and Keymaps
 (map! :leader
       (:prefix ("d" . "dired")
        :desc "Open dired" "d" #'dired
@@ -63,75 +142,8 @@
   (kbd "+") 'dired-create-directory
   (kbd "-") 'dired-do-kill-lines)
 
-(setq doom-modeline-height 22    ;; sets modeline height
-      doom-modeline-bar-width 5   ;; sets right bar width
-      doom-modeline-persp-name t  ;; adds perspective name to modeline
-      doom-modeline-persp-icon t) ;; adds folder icon next to persp name
-
+;; rainbow-mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
 
-;; DOCS (the default comments if I ever need them for some reason)
-
-;; Fonts
-
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-unicode-font' -- for unicode glyphs
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-
-;; Fonts (end)
-
-;; Theme
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-
-;; Theme (end)
-
-
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+(setq emms-source-file-default-directory "~/Music/")

@@ -3,7 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(warning-suppress-types '((initialization) defvaralias)))
+ '(package-selected-packages '(page-break-lines all-the-icons))
+ '(warning-suppress-log-types '((emacs) (emacs) (initialization) defvaralias))
+ '(warning-suppress-types '((emacs) (emacs) (initialization) defvaralias)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
