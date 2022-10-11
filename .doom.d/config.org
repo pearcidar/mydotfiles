@@ -1,0 +1,69 @@
+#+title: DoOm EmACs COnFiG
+
+* Basic Setup
+** Setting user info (change these to your's)
+#+begin_src emacs-lisp
+(setq user-full-name  "Tanbin Islam"
+      user-mail-address "islamtanbin43@gmail.com")
+#+end_src
+** Setting Fonts
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 15 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "FantasqueSansMono Nerd Font" :size 16))
+#+end_src
+** Theme (I like the Tokyo-Night Colorscheme from VSCode)
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-tokyo-night)
+#+end_src
+** Basic UI settings
+*** changing cursor color with evil modes
+#+begin_src emacs-lisp
+(setq evil-insert-state-cursor '(box "#e0af68")
+      evil-normal-state-cursor '(box "#bb9af6"))
+#+end_src
+*** enable blinking cursor
+#+begin_src emacs-lisp
+(blink-cursor-mode 1)
+#+end_src
+*** Using Beacon-mode
+#+begin_src emacs-lisp
+(beacon-mode 1)
+#+end_src
+*** Using Rainbow-mode
+#+begin_src emacs-lisp
+(require 'rainbow-mode)
+(rainbow-mode)
+#+end_src
+*** Setting Line Numbers
+#+begin_src emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+** Replacing doom-modeline with mood-line
+#+begin_src emacs-lisp
+(require 'mood-line)
+(mood-line-mode 1)
+#+end_src
+
+* Dashboard setup (emacs-dashboard that is)
+#+begin_src emacs-lisp
+(require 'all-the-icons)
+(require 'dashboard)
+(require 'page-break-lines)
+(dashboard-setup-startup-hook)
+(page-break-lines-mode)
+(setq dashboard-items '((recents  . 10)
+                        (projects . 5)))
+
+(dashboard-modify-heading-icons '((recents . "file-text")))
+(setq dashboard-startup-banner "~/.emacs.d/emacs.png")  ;; use custom image as banner
+(setq dashboard-center-content nil)
+(setq dashboard-show-shortcuts t)
+#+end_src
+
+* Other Stuff (unneeded)
+#+begin_src emacs-lisp
+(setq org-directory "~/.emacs.d/Org")
+(require 'org-make-toc)
+(add-hook 'org-mode-hook #'org-make-toc-mode)
+#+end_src
