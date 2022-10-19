@@ -1,7 +1,4 @@
 # My Dwm Rice ﳨ 
-
-My Dwm Rice I am STILL working on 
---- 
 ## Scrot
 
 ![](rice.png)
