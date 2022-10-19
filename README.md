@@ -9,7 +9,7 @@ My Dwm Rice I am STILL working on
 --- 
 ## Rice Info
 
-* OS >> Arch
+* OS >> Arch Linux x86_64
 * WM >> Dwm [(my custom build)](https://github.com/tanbinislam43/dwm)
 * Term >> St [(forked from Siduck)](https://github.com/siduck/st)
 * Wallpaper >> [Link](https://github.com/TanbinIslam43/collected-wallpapers/blob/main/57.jpg)
