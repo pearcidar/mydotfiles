@@ -17,8 +17,7 @@
 * Fonts used : FantasqueSansMono Nerd Font, SauceCodePro Nerd Font
 ## Installation
 
-This rice uses dwm and other suckless programs, to get the full rice experience, install them to (included in the rice info part)
-
+This rice uses dwm and other suckless programs, to get the full rice experience, install them too (included in the rice info part)
 
 After that, git clone the repo:
 
