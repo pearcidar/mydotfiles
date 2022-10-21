@@ -23,8 +23,8 @@ First, git clone the repo:
 
 ```
 git clone https://github.com/tanbinislam43/dotfiles.git
-
 ```
 Then put all the files in place
-This config uses doom emacs, so it is recommended to install it first from [here](https://github.com/doomemacs/doomemacs)
+
+This config uses Doom Emacs, so it is recommended to install it first from [here](https://github.com/doomemacs/doomemacs)
 
