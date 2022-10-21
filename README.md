@@ -15,7 +15,16 @@
 * Music player >> Deadbeef (GUI), Musikcube (TUI)
 * Browser >> Librewolf with tabliss
 * Others >> Newsboat (RSS Reader), xmenu (for the menu system implemented with dwm's statusbutton patch), btm (System Info)
+* Fonts used >> FantasqueSansMono Nerd Font, SauceCodePro Nerd Font
 
+## Installation
 
+First, git clone the repo:
 
+```
+git clone https://github.com/tanbinislam43/dotfiles.git
+
+```
+Then put all the files in place
+This config uses doom emacs, so it is recommended to install it first from [here](https://github.com/doomemacs/doomemacs)
 
