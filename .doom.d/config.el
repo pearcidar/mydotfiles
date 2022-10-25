@@ -26,7 +26,7 @@
                         (projects . 5)))
 
 (dashboard-modify-heading-icons '((recents . "file-text")))
-(setq dashboard-startup-banner "~/.emacs.d/emacs.png")  ;; use custom image as banner
+(setq dashboard-startup-banner "~/.doom.d/emacs.png")  ;; use custom image as banner
 (setq dashboard-center-content nil)
 (setq dashboard-show-shortcuts t)
 
