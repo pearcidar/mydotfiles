@@ -13,7 +13,7 @@
 * Editor : Neovim and Doom Emacs
 * Music player : Deadbeef (GUI), Musikcube (TUI)
 * Browser : Librewolf with tabliss
-* Others : Newsboat (RSS Reader), xmenu (for the menu system implemented with dwm's statusbutton patch), btm (System Info)
+* Others : Newsboat (RSS Reader), jgmenu (for the right-click menu), btm (System Info)
 * Fonts used : FantasqueSansMono Nerd Font, SauceCodePro Nerd Font
 ## Installation
 

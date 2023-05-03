@@ -1,0 +1,11 @@
+{
+  "alpha-nvim": { "branch": "main", "commit": "447b821d22b0c1e80494638f84cb00ff696f4ef6" },
+  "barbar.nvim": { "branch": "master", "commit": "de37647f05a5b556b6426b78c4608bbd40a8089f" },
+  "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
+  "lazy.nvim": { "branch": "main", "commit": "ceb413678dfcf3d5455208959185e3db1f7892c7" },
+  "lualine.nvim": { "branch": "master", "commit": "84ffb80e452d95e2c46fa29a98ea11a240f7843e" },
+  "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
+  "nvim-tree.lua": { "branch": "master", "commit": "53295de04d265fba695ec5a21912bdf36647dbad" },
+  "nvim-web-devicons": { "branch": "master", "commit": "b34362b20a4942b3245f958e73ebe1b09b020ad1" },
+  "tokyonight.nvim": { "branch": "main", "commit": "f2ed28707a0ad49047d9b733395ea205ea09f517" }
+}
