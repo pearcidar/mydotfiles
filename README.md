@@ -1,4 +1,7 @@
+<p align="center">
 # My Dwm Rice 🍚 
+</p>
+
 ## Scrot
 
 ![](rice.png)
