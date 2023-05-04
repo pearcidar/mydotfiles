@@ -1,6 +1,4 @@
-<p align="center">
-# My Dwm Rice 🍚 
-</p>
+<h1 align="center">My Dwm Rice 🍚</h1>
 
 ## Scrot
 
