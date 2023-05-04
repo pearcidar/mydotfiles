@@ -1,4 +1,4 @@
-# My Dwm Rice ﳨ 
+# My Dwm Rice 🍚 
 ## Scrot
 
 ![](rice.png)
@@ -8,11 +8,10 @@
 * OS : Arch Linux x86_64
 * WM : Dwm [(my custom build)](https://github.com/tanbinislam43/dwm)
 * Term : St [(forked from Siduck)](https://github.com/siduck/st)
-* Wallpaper : [Link](https://github.com/TanbinIslam43/collected-wallpapers/blob/main/57.jpg)
 * Bar : Dwmbar with [my slstatus](https://github.com/tanbinislam43/slstatus)
 * Editor : Neovim and Doom Emacs
 * Music player : Deadbeef (GUI), Musikcube (TUI)
-* Browser : Librewolf with tabliss
+* Browser : Firefox with tabliss
 * Others : Newsboat (RSS Reader), jgmenu (for the right-click menu), btm (System Info)
 * Fonts used : FantasqueSansMono Nerd Font, SauceCodePro Nerd Font
 ## Installation
