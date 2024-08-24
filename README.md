@@ -7,9 +7,9 @@
 ## Rice Info
 
 * OS : Arch Linux x86_64
-* WM : Dwm [(my custom build)](https://github.com/tanbinislam43/dwm)
+* WM : Dwm [(my custom build)](https://github.com/pearcidar/dwm/)
 * Term : St [(forked from Siduck)](https://github.com/siduck/st)
-* Bar : Dwmbar with [my slstatus](https://github.com/tanbinislam43/slstatus)
+* Bar : Dwmbar with [my slstatus](https://github.com/pearcidar/slstatus)
 * Editor : Neovim and Doom Emacs
 * Music player : Deadbeef (GUI), Musikcube (TUI)
 * Browser : Firefox with tabliss
@@ -22,7 +22,7 @@ This rice uses dwm and other suckless programs, to get the full rice experience,
 After that, git clone the repo:
 
 ```
-git clone https://github.com/tanbinislam43/dotfiles.git
+git clone https://github.com/pearcidar/dotfiles.git
 ```
 Then put all the files in place
 
